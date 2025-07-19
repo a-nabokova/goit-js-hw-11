@@ -7,6 +7,14 @@ import { loader } from '../main';
 export const gallery = document.querySelector('.gallery');
 
 
+  const lightbox = new SimpleLightbox('.gallery a', {
+    captions: true,
+    captionDelay: 250,
+    captionsData: 'alt',
+    captionPosition: 'bottom',
+  });
+
+
 export function createGallery(images) {
    const markup =  images.map(({ webformatURL, largeImageURL, tags, likes, views, comments, downloads }) => {
         return ` <li class="gallery-item">
@@ -35,13 +43,8 @@ export function createGallery(images) {
 
       gallery.insertAdjacentHTML('beforeend', markup);
 
-  const lightbox = new SimpleLightbox('.gallery a', {
-    captions: true,
-    captionDelay: 250,
-    captionsData: 'alt',
-    captionPosition: 'bottom',
-  });
-  lightbox.refresh();
+
+ lightbox.refresh();
 
 
 }
