@@ -7,39 +7,63 @@
 /* Common styles */
 @import url('./reset.css');
 
+.loader-wrapper {
+  position: fixed;
+   
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
  
+}
+
 .loader {
   width: 48px;
   height: 48px;
-  border: 3px solid #FFF;
+  border: 5px solid #FFF;
   border-radius: 50%;
   display: inline-block;
-  position: relative;
   box-sizing: border-box;
-  animation: rotation 1s linear infinite;
+  position: relative;
+  animation: pulse 1s linear infinite;
 }
 
-.loader::after {
+.loader:after {
   content: '';
-  box-sizing: border-box;
   position: absolute;
+  width: 70px;
+  height: 70px;
+  border: 10px solid #000000;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  border: 3px solid;
-  border-color: #FF3D00 transparent;
+  animation: scaleUp 1s linear infinite;
 }
 
-@keyframes rotation {
+@keyframes scaleUp {
   0% {
-    transform: rotate(0deg);
+    transform: translate(-50%, -50%) scale(0)
   }
 
+  60%,
   100% {
-    transform: rotate(360deg);
+    transform: translate(-50%, -50%) scale(1)
+  }
+}
+
+@keyframes pulse {
+
+  0%,
+  60%,
+  100% {
+    transform: scale(1)
+  }
+
+  80% {
+    transform: scale(1.2)
   }
 }
 
